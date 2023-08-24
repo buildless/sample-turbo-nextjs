@@ -7,8 +7,11 @@ This is a [Buildless](https://less.build)-enhanced [Next.js](https://nextjs.org/
 After installing dependencies, you can use the `turbo` (`npx turbo`) command to run your tasks, and they will be automatically stored in the remote cache:
 
 ```bash
+# Link the project to enable remote caching, note that the API endpoint is different than for builds
+npx turbo link --api="https://turbo.less.build" --token="$BUILDLESS_API_KEY"
+
 # Run the 'build' script for the first time
-npx turbo build --api="https://api.less.build/cache/turbo" --token="$BUILDLESS_API_KEY" --team="my-team"
+npx turbo build --api="https://turbo.less.build/cache/turbo" --token="$BUILDLESS_API_KEY" --team="my-team"
 ```
 
 If we run the task again, it will be fetched from the local cache:
@@ -18,7 +21,7 @@ If we run the task again, it will be fetched from the local cache:
 rm -fr ./.next
 
 # run the cached task
-npx turbo build --api="https://api.less.build/cache/turbo" --token="$BUILDLESS_API_KEY" --team="my-team"
+npx turbo build --api="https://turbo.less.build/cache/turbo" --token="$BUILDLESS_API_KEY" --team="my-team"
 >  Tasks:   1 successful, 1 total
 > Cached:   1 cached, 1 total
 >   Time:   14ms >>> FULL TURBO
